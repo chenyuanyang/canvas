@@ -23,11 +23,9 @@ storage_path=${STORAGE_PATH:=/var/work/storage}
 
 ########## 本地打包处理 ##########
 #composer更新
-composeddr install -vvv --no-dev --ignore-platform-reqs --no-interaction --optimize-autoloader --no-scripts
+composer install -vvv --no-dev --ignore-platform-reqs --no-interaction --optimize-autoloader --no-scripts
 
 #替换环境变量
-
-
 
 cp $buildpath/.env.example $buildpath/.env
 sed -i "s|\[\[\[APP_LOG_PATH\]\]\]|${log_path}|g" $buildpath/.env
@@ -49,7 +47,7 @@ sed -i "s|\[\[\[DB_PASSWORD\]\]\]|${DB_PASSWORD}|g" $buildpath/.env
 #chmod -R 775 $buildpath
 
 # php-fpm.sh reload
-service php5-fpm restart
+service php7.0-fpm restart
 
 
 
