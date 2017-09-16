@@ -16,7 +16,7 @@ buildpath=$srcdir
 log_path=/var/data/log/$deploy_project_name
 
 #php项目持久存储目录
-storage_path=${buildpath}"/storage"
+storage_path=${buildpath}/storage
 
 #host
 #db_host=${DB_HOST:=""}
@@ -44,7 +44,9 @@ sed -i "s|\[\[\[DB_PASSWORD\]\]\]|${DB_PASSWORD}|g" $buildpath/.env
 #find $buildpath -name '.gitignore' | xargs rm -rf
 
 #修改权限
-chmod -R 775 $storage_path
+chmod -R 777 $storage_path
+chmod -R 777 ${buildpath}/bootstrap/
+
 
 # php-fpm.sh reload
 service php7.0-fpm restart
